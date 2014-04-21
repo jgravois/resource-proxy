@@ -74,7 +74,11 @@ The proxy consists of the following files:
 * web.config: An XML file that stores ASP.NET configuration data. Use this file to configure logging for the proxy. By default the proxy will write log messages to a file named auth_proxy.log located in  'C:\Temp\Shared\proxy_logs'. Note that the folder location needs to exist in order for the log file to be successfully created.
 ##Requirements
 
-* ASP.NET 4.0 or greater (4.5 is required on Windows 8/Server 2012, see [this article] (http://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-using-aspnet-35-and-aspnet-45) for more information)
+* IIS with ASP.NET 4.0 or greater (4.5 is required on Windows 8/Server 2012, see [this article] (http://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-using-aspnet-35-and-aspnet-45) for more information)
+
+##FAQ/Gotchas
+* When running the proxy in a custom application pool identity, its possible that the service will die silently (and stop the application pool entirely) if the network credentials that were supplied when creating the application pool are no longer valid.
+* While it is possible to proxy requests for secure ArcGIS Online/Portal content using AppId/AppSecret type credentials, no model for sharing content with applications exists.  Because of this, searches for content owned by the person who owns an application will not return results.
 
 ##Issues
 
